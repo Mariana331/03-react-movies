@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Movie } from "../../types/movie";
-import { Toaster } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import fetchMovies from "../../services/movieService";
 import SearchBar from "../SearchBar/SearchBar";
 import MovieGrid from "../MovieGrid/MovieGrid";
@@ -17,7 +17,11 @@ export default function App() {
       setIsLoading(true);
       setIsError(false);
       const data = await fetchMovies(query);
-      setMovies(data);
+      if (!data) {
+        toast.error("No movies found for your request.");
+      } else {
+        setMovies(data);
+      }
     } catch {
       setIsError(true);
     } finally {
