@@ -62,6 +62,6 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
         </div>
       </div>
     </div>,
-    document.body
+    document.getElementById("sidebar-root") as HTMLDivElement
   );
 }
