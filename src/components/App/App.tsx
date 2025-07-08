@@ -17,7 +17,7 @@ export default function App() {
   const openModal = (movie: Movie) => {
     setSelectedMovie(movie);
   };
-  const CloseModal = () => {
+  const closeModal = () => {
     setSelectedMovie(null);
   };
 
@@ -25,6 +25,7 @@ export default function App() {
     try {
       setIsLoading(true);
       setIsError(false);
+      setMovies([]);
       const data = await fetchMovies(query);
       if (!data || data.length === 0) {
         toast.error("No movies found for your request.");
@@ -46,7 +47,7 @@ export default function App() {
       {isError && <ErrorMessage />}
       {movies.length > 0 && <MovieGrid movies={movies} onSelect={openModal} />}
       {selectedMovie && (
-        <MovieModal movie={selectedMovie} onClose={CloseModal} />
+        <MovieModal movie={selectedMovie} onClose={closeModal} />
       )}
     </>
   );
