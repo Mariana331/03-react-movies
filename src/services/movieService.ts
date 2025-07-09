@@ -2,7 +2,7 @@ import axios from "axios";
 import type { Movie } from "../types/movie";
 
 const API_URL = `https://api.themoviedb.org/3/search/movie`;
-const TOKEN = import.meta.env.VITE_Pexels_TOKEN;
+const TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 interface MovieResponse {
   results: Movie[];
